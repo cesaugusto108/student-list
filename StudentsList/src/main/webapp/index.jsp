@@ -28,6 +28,6 @@
 		<title>Students List - Home</title>
 	</head>
     <body>
-        
+        <%@ include file="header.jsp" %>
     </body>
 </html>
