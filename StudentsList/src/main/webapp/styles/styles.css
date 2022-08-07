@@ -6,6 +6,21 @@ header {
     font-family: "Montserrat", sans-serif;
 }
 
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+}
+
+footer a {
+    text-decoration: none;
+    color: antiquewhite;
+}
+
+footer a:hover {
+    color: orange;
+}
+
 .navbar_home-title {
     color: #909090;
     margin-bottom: -10px;
