@@ -6,7 +6,6 @@
 		<form class="d-flex ms-lg-4 ms-0 navbar-form" role="search">
 			<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
 			<button class="btn btn-outline-primary" type="submit">Search</button>
-            <button class="btn btn-success ms-2" type="submit">Add</button>
 		</form>
 	</div>
 </nav>
