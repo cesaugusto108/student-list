@@ -14,4 +14,14 @@
         <servlet-name>ControllerServlet</servlet-name>
         <url-pattern>/Students</url-pattern>
     </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>ControllerServlet</servlet-name>
+        <url-pattern>/confirm</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>ControllerServlet</servlet-name>
+        <url-pattern>/delete</url-pattern>
+    </servlet-mapping>
 </web-app>

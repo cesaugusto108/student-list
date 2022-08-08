@@ -26,6 +26,12 @@ public class ControllerServlet extends HttpServlet {
             case "/Students":
                 listStudents(request, response);
                 break;
+            case "/confirm":
+                confirmDelete(request, response);
+                break;
+            case "/delete":
+                delete(request, response);
+                break;
             default:
                 try {
                     response.sendRedirect("/Students");
@@ -47,6 +53,36 @@ public class ControllerServlet extends HttpServlet {
         try {
             requestDispatcher.forward(request, response);
         } catch (ServletException | IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void confirmDelete(
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) {
+        try {
+            student.setId(request.getParameter("id"));
+            request.setAttribute("student", student);
+
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("delete.jsp");
+            requestDispatcher.forward(request, response);
+        } catch (IOException | ServletException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void delete(
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) {
+        student.setId(request.getParameter("id"));
+
+        dao.delete(student);
+
+        try {
+            response.sendRedirect("Students");
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }

@@ -48,4 +48,18 @@ public class Dao {
             throw new RuntimeException(e);
         }
     }
+
+    public void delete(Student student) {
+        String delete = "DELETE FROM Students WHERE ID = ?";
+
+        try (Connection connection = connect()) {
+            PreparedStatement preparedStatement = connection.prepareStatement(delete);
+
+            preparedStatement.setString(1, student.getId());
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

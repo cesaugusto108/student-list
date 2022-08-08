@@ -31,6 +31,18 @@ footer a:hover {
     font-size: 0.8rem;
 }
 
+.delete-page {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #404040;
+    color: aliceblue;
+}
+
 @media (max-width: 732px) {
     .navbar-form {
         width: 100%;

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html" pageEncoding="UTF-8" %>
-<%@ page import="ces.augusto108.model.entities.Student" %>
+<%@ page import="ces.augusto108.model.entities.Student" %>  
 <%@ page import="java.util.List" %>
 <%
     List<Student> list = (List<Student>) request.getAttribute("students");
@@ -21,7 +21,9 @@
 				</div>
 				<div class="col-2">
 					<button class="btn btn-outline-secondary me-2" type="submit">Edit</button>
-					<button class="btn btn-danger" type="submit">Delete</button>
+                    <a href="confirm?id=<%= list.get(i).getId() %>">
+                        <button class="btn btn-danger" type="button">Delete</button>
+                    </a>
 				</div>
 			</div>
             <% } %>
