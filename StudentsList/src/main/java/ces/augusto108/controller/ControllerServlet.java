@@ -34,7 +34,7 @@ public class ControllerServlet extends HttpServlet {
                 break;
             default:
                 try {
-                    response.sendRedirect("/Students");
+                    response.sendRedirect("Students");
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
