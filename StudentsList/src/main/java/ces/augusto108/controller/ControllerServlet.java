@@ -24,13 +24,16 @@ public class ControllerServlet extends HttpServlet {
             ) throws ServletException {
         switch (request.getServletPath()) {
             case "/Students":
-                listStudents(request, response);
+                list(request, response);
                 break;
             case "/confirm":
                 confirmDelete(request, response);
                 break;
             case "/delete":
                 delete(request, response);
+                break;
+            case "/add":
+                add(request, response);
                 break;
             default:
                 try {
@@ -41,11 +44,11 @@ public class ControllerServlet extends HttpServlet {
         }
     }
 
-    public void listStudents(
+    public void list(
             HttpServletRequest request,
             HttpServletResponse response
     ) {
-        List<Student> list = dao.listStudents();
+        List<Student> list = dao.list();
 
         request.setAttribute("students", list);
 
@@ -79,6 +82,25 @@ public class ControllerServlet extends HttpServlet {
         student.setId(request.getParameter("id"));
 
         dao.delete(student);
+
+        try {
+            response.sendRedirect("Students");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void add(
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) {
+        student.setName(request.getParameter("name"));
+        student.setEmail(request.getParameter("email"));
+        student.setTelephone(request.getParameter("telephone"));
+        student.setStudentId(request.getParameter("studentId"));
+        student.setRegistration(request.getParameter("registration"));
+
+        dao.add(student);
 
         try {
             response.sendRedirect("Students");

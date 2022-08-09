@@ -22,7 +22,7 @@ public class Dao {
         }
     }
 
-    public List<Student> listStudents() {
+    public List<Student> list() {
         String select = "SELECT * FROM Students ORDER BY STUDENT_NAME";
 
         try (Connection connection = connect()) {
@@ -56,6 +56,25 @@ public class Dao {
             PreparedStatement preparedStatement = connection.prepareStatement(delete);
 
             preparedStatement.setString(1, student.getId());
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void add(Student student) {
+        String add = "INSERT INTO Students " +
+            "(STUDENT_NAME, EMAIL, TELEPHONE, STUDENT_ID, REGISTRATION) VALUES (?, ?, ?, ?, ?)";
+
+        try (Connection connection = connect()) {
+            PreparedStatement preparedStatement = connection.prepareStatement(add);
+
+            preparedStatement.setString(1, student.getName());
+            preparedStatement.setString(2, student.getEmail());
+            preparedStatement.setString(3, student.getTelephone());
+            preparedStatement.setString(4, student.getStudentId());
+            preparedStatement.setString(5, student.getRegistration());
 
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
