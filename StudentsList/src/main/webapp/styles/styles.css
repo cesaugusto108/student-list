@@ -1,5 +1,6 @@
 body {
     font-family: "Roboto", sans-serif;
+    font-size: 0.8rem;
 }
 
 header {
@@ -26,9 +27,22 @@ footer a:hover {
     margin-bottom: -10px;
 }
 
+.list-header {
+    height: 50px;
+}
+
+.add-list_header {
+    background-color: #adb5bd;
+}
+
 .students-list_header {
     text-transform: uppercase;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
+}
+
+.list-body {
+    background-color: #f8f9fa;
+    height: 100vh;
 }
 
 .delete-page {

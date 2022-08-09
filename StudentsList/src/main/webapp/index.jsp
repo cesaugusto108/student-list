@@ -4,7 +4,6 @@
 	<%@ include file="head.jsp" %>
 	<body>
 		<%@ include file="header.jsp" %>
-        <%@ include file="list-header.jsp" %>
         <%@ include file="list.jsp" %>
 		<footer class="p-3 bg-secondary text-light">
 			<div class="text-center">
