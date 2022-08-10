@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html" pageEncoding="UTF-8" %>
-<nav class="navbar bg-light pb-lg-2 pb-3">
+<nav class="navbar bg-white pb-lg-2 pb-3">
 	<div class="container-fluid">
 		<a class="navbar-brand fs-1">randomUni</a>
         <h1 class="navbar_home-title fs-4 ms-auto me-4">Students list</h1>
