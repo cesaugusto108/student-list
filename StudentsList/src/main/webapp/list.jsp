@@ -22,29 +22,31 @@
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-11">
-                        <form action="add" class="mt-2">
+                        <form action="add" class="mt-2" id="add-form" >
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingName" placeholder="First Last name" name="name" />
-                                <label for="floatingName">Name</label>
+                                <input type="text" class="form-control" id="floatingName" placeholder="Name" name="name" />
+                                <label for="floatingName" id="floatingNameLabel">Name</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com" name="email" />
-                                <label for="floatingEmail">Email address</label>
+                                <input type="email" class="form-control" id="floatingEmail" placeholder="Email address" name="email" />
+                                <label for="floatingEmail" id="floatingEmailLabel">Email address</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="tel" class="form-control" id="floatingPhone" placeholder="1200912123434" name="telephone" />
-                                <label for="floatingPhone">Telephone</label>
+                                <input type="tel" class="form-control" id="floatingPhone" placeholder="Telephone" name="telephone" />
+                                <label for="floatingPhone" id="floatingPhoneLabel">Telephone</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="tel" class="form-control" id="floatingId" placeholder="12345678900" name="studentId" />
-                                <label for="floatingId">Id</label>
+                                <input type="tel" class="form-control" id="floatingId" placeholder="Id" name="studentId" />
+                                <label for="floatingId" id="floatingIdLabel">Id</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="tel" class="form-control" id="floatingRegistration" placeholder="200000010111" name="registration" />
-                                <label for="floatingRegistration">Registration</label>
+                                <input type="tel" class="form-control" id="floatingRegistration" placeholder="Registration" name="registration" />
+                                <label for="floatingRegistration" id="floatingRegistrationLabel">Registration</label>
                             </div>
                             <div>
-                                <button class="btn btn-success mb-3" type="submit">Add</button>
+                                <a href="javascript:validate()">
+                                    <input type="button" value="Add" class="btn btn-success mb-3" id="add-btn">
+                                </a>
                             </div>
                         </form>
                     </div>
@@ -71,14 +73,14 @@
                     </div>
                 </div>
                 <% for (int i = 0; i < list.size(); i++) { %>
-                <div class="row align-items-center bg-white pt-2 pb-2 mt-4 mt-xl-2">
+                <div class="row align-items-center bg-white pt-2 pb-2 mt-4 mt-xl-2 ms-2 me-2 ms-lg-0 me-lg-0">
                     <div class="col-8 col-xl-10">
                         <div class="row align-items-center text-start">
                             <div class="d-flex flex-column col-xl-3 mt-1 mt-xl-0 text-xl-start">
                                 <div class="list-label text-lg-start text-secondary text-opacity-50">
                                     Name
                                 </div>
-                                <div class=""><%= list.get(i).getName() %></div>
+                                <div class="student-name"><%= list.get(i).getName() %></div>
                             </div>
                             <div class="d-flex flex-column col-xl-3 mt-1 mt-xl-0">
                                 <div class="list-label text-lg-start text-secondary text-opacity-50">
@@ -119,4 +121,5 @@
         </div>
     </div>
 </div>
+<script src="./scripts/validation.js"></script>
 
