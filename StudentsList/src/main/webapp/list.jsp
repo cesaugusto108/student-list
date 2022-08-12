@@ -86,7 +86,7 @@
                                 <div class="list-label text-lg-start text-secondary text-opacity-50">
                                     Email
                                 </div>
-                                <div class=""><%= list.get(i).getEmail() %></div>
+                                <div class="student-email"><%= list.get(i).getEmail() %></div>
                             </div>
                             <div class="d-flex flex-column col-xl-2 mt-1 mt-xl-0">
                                 <div class="list-label text-lg-start text-secondary text-opacity-50">
@@ -122,4 +122,5 @@
     </div>
 </div>
 <script src="./scripts/validation.js"></script>
+<script src="./scripts/format-text.js"></script>
 
