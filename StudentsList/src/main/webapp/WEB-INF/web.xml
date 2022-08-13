@@ -6,27 +6,42 @@
     <display-name>Archetype Created Web Application</display-name>
 
     <servlet>
-        <servlet-name>ControllerServlet</servlet-name>
-        <servlet-class>ces.augusto108.controller.ControllerServlet</servlet-class>
+        <servlet-name>Controller</servlet-name>
+        <servlet-class>ces.augusto108.controller.Controller</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>EditController</servlet-name>
+        <servlet-class>ces.augusto108.controller.EditController</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>ControllerServlet</servlet-name>
+        <servlet-name>Controller</servlet-name>
         <url-pattern>/Students</url-pattern>
     </servlet-mapping>
     
     <servlet-mapping>
-        <servlet-name>ControllerServlet</servlet-name>
+        <servlet-name>Controller</servlet-name>
         <url-pattern>/confirm</url-pattern>
     </servlet-mapping>
     
     <servlet-mapping>
-        <servlet-name>ControllerServlet</servlet-name>
+        <servlet-name>Controller</servlet-name>
         <url-pattern>/delete</url-pattern>
     </servlet-mapping>
     
     <servlet-mapping>
-        <servlet-name>ControllerServlet</servlet-name>
+        <servlet-name>Controller</servlet-name>
         <url-pattern>/add</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>EditController</servlet-name>
+        <url-pattern>/select</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>EditController</servlet-name>
+        <url-pattern>/list</url-pattern>
     </servlet-mapping>
 </web-app>

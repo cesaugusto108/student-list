@@ -37,6 +37,10 @@ footer a:hover {
 	background-color: #adb5bd;
 }
 
+.edit-list_header {
+    background-color: rgba(255, 166, 0, 0.445);
+}
+
 .students-list_header {
 	text-transform: uppercase;
 	font-size: 0.7rem;

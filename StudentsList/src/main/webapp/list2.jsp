@@ -11,16 +11,16 @@
             <div class="d-flex flex-column">
                 <div class="row list_header_strip">
                     <div class="col-12">
-                        <div class="row align-items-center text-light add-list_header list-header">
+                        <div class="row align-items-center text-dark edit-list_header list-header">
                             <div class="col-12">
                                 <div class="text-center students-list_header p-2">
-                                    Add a new student to the list
+                                    Edit the information below
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <%@ include file="add-page.jsp" %>
+                <%@ include file="edit-page.jsp" %>
             </div>
         </div>
         <!-- list -->

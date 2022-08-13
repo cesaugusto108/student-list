@@ -1,4 +1,5 @@
-<div class="row justify-content-center">
+<%@ page language="java" contentType="text/html" pageEncoding="UTF-8" %>
+<div class="row justify-content-center add-page">
     <div class="col-11">
         <form action="add" class="mt-2" id="add-form">
             <div class="form-floating mb-3">

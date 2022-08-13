@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-public class ControllerServlet extends HttpServlet {
+public class Controller extends HttpServlet {
     private static final long serialVersionUID = -1940621868147929234L;
 
     Student student = new Student();
@@ -24,7 +24,7 @@ public class ControllerServlet extends HttpServlet {
             ) throws ServletException {
         switch (request.getServletPath()) {
             case "/Students":
-                list(request, response);
+                showHome(request, response);
                 break;
             case "/confirm":
                 confirmDelete(request, response);
@@ -44,7 +44,7 @@ public class ControllerServlet extends HttpServlet {
         }
     }
 
-    public void list(
+    public void showHome(
             HttpServletRequest request,
             HttpServletResponse response
     ) {

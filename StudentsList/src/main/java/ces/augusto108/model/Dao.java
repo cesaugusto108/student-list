@@ -1,6 +1,7 @@
 package ces.augusto108.model;
 
 import ces.augusto108.model.entities.Student;
+import com.mysql.cj.exceptions.ConnectionIsClosedException;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -77,6 +78,32 @@ public class Dao {
             preparedStatement.setString(5, student.getRegistration());
 
             preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Student select(String id) {
+        String select = "SELECT * FROM Students WHERE ID = ?";
+
+        try (Connection connection = connect()) {
+            PreparedStatement preparedStatement = connection.prepareStatement(select);
+
+            preparedStatement.setString(1, id);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            Student student = new Student();
+
+            while (resultSet.next()) {
+                student.setName(resultSet.getString(2));
+                student.setEmail(resultSet.getString(3));
+                student.setTelephone(resultSet.getString(4));
+                student.setStudentId(resultSet.getString(5));
+                student.setRegistration(resultSet.getString(6));
+            }
+
+            return student;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
