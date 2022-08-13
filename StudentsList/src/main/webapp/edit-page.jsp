@@ -1,10 +1,15 @@
 <%@ page language="java" contentType="text/html" pageEncoding="UTF-8" %>
 <% 
-    Student student=(Student) request.getAttribute("student"); 
+    Student student = (Student) request.getAttribute("student");
 %>
 <div class="row justify-content-center">
     <div class="col-11">
         <form action="edit" class="mt-2" id="add-form">
+            <div class="form-floating mb-3" id="student-id">
+                <input type="text" class="form-control" placeholder="Name" name="id"
+                    value="<%= student.getId() %>" />
+                <label for="floatingName" id="floatingNameLabel">Id</label>
+            </div>
             <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="floatingName" placeholder="Name" name="name" value="<%= student.getName() %>" />
                 <label for="floatingName" id="floatingNameLabel">Name</label>
@@ -14,7 +19,7 @@
                 <label for="floatingEmail" id="floatingEmailLabel">Email address</label>
             </div>
             <div class="form-floating mb-3">
-                <input type="tel" class="form-control" id="floatingPhone" placeholder="Telephone" name="telephone" value="<%= student.getTelephone() %>"/>
+                <input type="tel" class="form-control" id="floatingPhone" placeholder="Telephone" name="telephone" value="<%= student.getTelephone() %>" />
                 <label for="floatingPhone" id="floatingPhoneLabel">Telephone</label>
             </div>
             <div class="form-floating mb-3">

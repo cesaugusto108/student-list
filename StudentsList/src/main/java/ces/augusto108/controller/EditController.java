@@ -24,6 +24,8 @@ public class EditController extends HttpServlet {
     ) {
         if (request.getServletPath().equals("/select")) {
             select(request, response);
+        } else if (request.getServletPath().equals("/edit")) {
+            edit(request, response);
         } else {
             try {
                 response.sendRedirect("Students");
@@ -44,6 +46,27 @@ public class EditController extends HttpServlet {
         request.setAttribute("student", student);
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("index2.jsp");
+        try {
+            requestDispatcher.forward(request, response);
+        } catch (ServletException | IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void edit(
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) {
+        student.setId(request.getParameter("id"));
+        student.setName(request.getParameter("name"));
+        student.setEmail(request.getParameter("email"));
+        student.setTelephone(request.getParameter("telephone"));
+        student.setStudentId(request.getParameter("studentId"));
+        student.setRegistration(request.getParameter("registration"));
+
+        dao.edit(student);
+
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("Students");
         try {
             requestDispatcher.forward(request, response);
         } catch (ServletException | IOException e) {

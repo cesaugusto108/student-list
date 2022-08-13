@@ -96,6 +96,7 @@ public class Dao {
             Student student = new Student();
 
             while (resultSet.next()) {
+                student.setId(resultSet.getString(1));
                 student.setName(resultSet.getString(2));
                 student.setEmail(resultSet.getString(3));
                 student.setTelephone(resultSet.getString(4));
@@ -104,6 +105,28 @@ public class Dao {
             }
 
             return student;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void edit(Student student) {
+        String edit =
+                "UPDATE Students " +
+                        "SET STUDENT_NAME = ?, EMAIL = ?, TELEPHONE = ?, STUDENT_ID = ?, REGISTRATION = ? " +
+                        "WHERE ID = ?";
+
+        try (Connection connection = connect()) {
+            PreparedStatement preparedStatement = connection.prepareStatement(edit);
+
+            preparedStatement.setString(1, student.getName());
+            preparedStatement.setString(2, student.getEmail());
+            preparedStatement.setString(3, student.getTelephone());
+            preparedStatement.setString(4, student.getStudentId());
+            preparedStatement.setString(5, student.getRegistration());
+            preparedStatement.setString(6, student.getId());
+
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

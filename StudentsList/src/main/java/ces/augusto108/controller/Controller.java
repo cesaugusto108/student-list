@@ -24,7 +24,7 @@ public class Controller extends HttpServlet {
             ) throws ServletException {
         switch (request.getServletPath()) {
             case "/Students":
-                showHome(request, response);
+                showList(request, response);
                 break;
             case "/confirm":
                 confirmDelete(request, response);
@@ -44,7 +44,7 @@ public class Controller extends HttpServlet {
         }
     }
 
-    public void showHome(
+    public void showList(
             HttpServletRequest request,
             HttpServletResponse response
     ) {
