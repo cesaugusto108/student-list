@@ -1,7 +1,6 @@
 package ces.augusto108.model;
 
 import ces.augusto108.model.entities.Student;
-import com.mysql.cj.exceptions.ConnectionIsClosedException;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -66,7 +65,7 @@ public class Dao {
 
     public void add(Student student) {
         String add = "INSERT INTO Students " +
-            "(STUDENT_NAME, EMAIL, TELEPHONE, STUDENT_ID, REGISTRATION) VALUES (?, ?, ?, ?, ?)";
+                "(STUDENT_NAME, EMAIL, TELEPHONE, STUDENT_ID, REGISTRATION) VALUES (?, ?, ?, ?, ?)";
 
         try (Connection connection = connect()) {
             PreparedStatement preparedStatement = connection.prepareStatement(add);
@@ -127,6 +126,35 @@ public class Dao {
             preparedStatement.setString(6, student.getId());
 
             preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public List<Student> search(String name) {
+        String search = "SELECT * FROM Students WHERE STUDENT_NAME LIKE ? ORDER BY STUDENT_NAME";
+
+        try (Connection connection = connect()) {
+            PreparedStatement preparedStatement = connection.prepareStatement(search);
+
+            preparedStatement.setString(1, "%" + name + "%");
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            List<Student> studentList = new ArrayList<>();
+
+            while (resultSet.next()) {
+                studentList.add(new Student(
+                        resultSet.getString(1),
+                        resultSet.getString(2),
+                        resultSet.getString(3),
+                        resultSet.getString(4),
+                        resultSet.getString(5),
+                        resultSet.getString(6)
+                ));
+            }
+
+            return studentList;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

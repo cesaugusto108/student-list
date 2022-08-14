@@ -15,8 +15,13 @@ footer {
 	width: 100vw;
 }
 
+a {
+    text-decoration: none;
+    color: cornflowerblue;
+    outline: none;
+}
+
 footer a {
-	text-decoration: none;
 	color: antiquewhite;
 }
 
@@ -56,7 +61,7 @@ footer a:hover {
 }
 
 .student-list_bottom {
-	height: 50px;
+	height: 80px;
 }
 
 .delete-page {

@@ -21,7 +21,7 @@ public class Controller extends HttpServlet {
     protected void doGet(
             HttpServletRequest request,
             HttpServletResponse response
-            ) throws ServletException {
+    ) {
         switch (request.getServletPath()) {
             case "/Students":
                 showList(request, response);
@@ -34,6 +34,9 @@ public class Controller extends HttpServlet {
                 break;
             case "/add":
                 add(request, response);
+                break;
+            case "/search":
+                search(request, response);
                 break;
             default:
                 try {
@@ -53,6 +56,7 @@ public class Controller extends HttpServlet {
         request.setAttribute("students", list);
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
+
         try {
             requestDispatcher.forward(request, response);
         } catch (ServletException | IOException e) {
@@ -105,6 +109,23 @@ public class Controller extends HttpServlet {
         try {
             response.sendRedirect("Students");
         } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void search(
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) {
+        List<Student> studentList = dao.search(request.getParameter("search"));
+
+        request.setAttribute("searchResult", studentList);
+
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("index3.jsp");
+
+        try {
+            requestDispatcher.forward(request, response);
+        } catch (ServletException | IOException e) {
             throw new RuntimeException(e);
         }
     }
