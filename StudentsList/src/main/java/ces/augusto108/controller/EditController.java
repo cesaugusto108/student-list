@@ -9,9 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.Serial;
 import java.util.List;
 
 public class EditController extends HttpServlet {
+    @Serial
     private static final long serialVersionUID = 2576431247695925371L;
 
     Student student = new Student();
@@ -22,15 +24,15 @@ public class EditController extends HttpServlet {
             HttpServletRequest request,
             HttpServletResponse response
     ) {
-        if (request.getServletPath().equals("/select")) {
-            select(request, response);
-        } else if (request.getServletPath().equals("/edit")) {
-            edit(request, response);
-        } else {
-            try {
-                response.sendRedirect("Students");
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+        switch (request.getServletPath()) {
+            case "/select" -> select(request, response);
+            case "/edit" -> edit(request, response);
+            default -> {
+                try {
+                    response.sendRedirect("Students");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         }
     }

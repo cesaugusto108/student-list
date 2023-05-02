@@ -9,9 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.Serial;
 import java.util.List;
 
 public class Controller extends HttpServlet {
+    @Serial
     private static final long serialVersionUID = -1940621868147929234L;
 
     Student student = new Student();
@@ -23,27 +25,18 @@ public class Controller extends HttpServlet {
             HttpServletResponse response
     ) {
         switch (request.getServletPath()) {
-            case "/Students":
-                showList(request, response);
-                break;
-            case "/confirm":
-                confirmDelete(request, response);
-                break;
-            case "/delete":
-                delete(request, response);
-                break;
-            case "/add":
-                add(request, response);
-                break;
-            case "/search":
-                search(request, response);
-                break;
-            default:
+            case "/Students" -> showList(request, response);
+            case "/confirm" -> confirmDelete(request, response);
+            case "/delete" -> delete(request, response);
+            case "/add" -> add(request, response);
+            case "/search" -> search(request, response);
+            default -> {
                 try {
                     response.sendRedirect("Students");
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
+            }
         }
     }
 
