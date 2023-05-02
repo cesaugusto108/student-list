@@ -2,10 +2,7 @@ package ces.augusto108.model.entities;
 
 import java.io.Serializable;
 
-public class Student implements Serializable {
-    private static final long serialVersionUID = 5377615504564456188L;
-
-    private String id;
+public final class Student extends BaseEntity {
     private String name;
     private String email;
     private String telephone;
@@ -16,20 +13,12 @@ public class Student implements Serializable {
     }
 
     public Student(String id, String name, String email, String telephone, String studentId, String registration) {
-        this.id = id;
+        super(id);
         this.name = name;
         this.email = email;
         this.telephone = telephone;
         this.studentId = studentId;
         this.registration = registration;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getName() {
