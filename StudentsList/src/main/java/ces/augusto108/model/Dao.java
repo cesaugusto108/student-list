@@ -7,15 +7,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Dao {
+    private final String password = System.getenv("PWORD");
 
     private Connection connect() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
             return DriverManager.getConnection(
-                    "jdbc:mysql://127.0.0.1:3306/StudentsList?useTimeZone=true&serverTimeZone=UTC",
+                    "jdbc:mysql://127.0.0.1:3306/STUDENTS?useTimeZone=true&serverTimeZone=UTC",
                     "root",
-                    "1234"
+                    password
             );
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
@@ -23,7 +24,7 @@ public class Dao {
     }
 
     public List<Student> list() {
-        String select = "SELECT * FROM Students ORDER BY STUDENT_NAME";
+        String select = "SELECT * FROM STUDENTS_LIST ORDER BY STUDENT_NAME";
 
         try (Connection connection = connect()) {
             PreparedStatement preparedStatement = connection.prepareStatement(select);
@@ -50,7 +51,7 @@ public class Dao {
     }
 
     public void delete(Student student) {
-        String delete = "DELETE FROM Students WHERE ID = ?";
+        String delete = "DELETE FROM STUDENTS_LIST WHERE ID = ?";
 
         try (Connection connection = connect()) {
             PreparedStatement preparedStatement = connection.prepareStatement(delete);
@@ -64,7 +65,7 @@ public class Dao {
     }
 
     public void add(Student student) {
-        String add = "INSERT INTO Students " +
+        String add = "INSERT INTO STUDENTS_LIST " +
                 "(STUDENT_NAME, EMAIL, TELEPHONE, STUDENT_ID, REGISTRATION) VALUES (?, ?, ?, ?, ?)";
 
         try (Connection connection = connect()) {
@@ -83,7 +84,7 @@ public class Dao {
     }
 
     public Student select(String id) {
-        String select = "SELECT * FROM Students WHERE ID = ?";
+        String select = "SELECT * FROM STUDENTS_LIST WHERE ID = ?";
 
         try (Connection connection = connect()) {
             PreparedStatement preparedStatement = connection.prepareStatement(select);
@@ -111,7 +112,7 @@ public class Dao {
 
     public void edit(Student student) {
         String edit =
-                "UPDATE Students " +
+                "UPDATE STUDENTS_LIST " +
                         "SET STUDENT_NAME = ?, EMAIL = ?, TELEPHONE = ?, STUDENT_ID = ?, REGISTRATION = ? " +
                         "WHERE ID = ?";
 
@@ -132,7 +133,7 @@ public class Dao {
     }
 
     public List<Student> search(String name) {
-        String search = "SELECT * FROM Students WHERE STUDENT_NAME LIKE ? ORDER BY STUDENT_NAME";
+        String search = "SELECT * FROM STUDENTS_LIST WHERE STUDENT_NAME LIKE ? ORDER BY STUDENT_NAME";
 
         try (Connection connection = connect()) {
             PreparedStatement preparedStatement = connection.prepareStatement(search);
