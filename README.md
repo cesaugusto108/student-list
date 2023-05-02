@@ -1,4 +1,7 @@
-Listagem de informações / Information list (Java EE, Servlets, JSP, MySQL, HTML, Javascript, CSS, Bootstrap)
+Listagem de informações / Information list (Java EE, Servlet, JSP, MySQL, HTML, Javascript, CSS, Bootstrap)
+
+Aplicação mostra uma lista de estudantes a partir de dados salvos em banco de dados (MySQL). Utiliza Servlet e JSP.
+App shows a list of students retrieved from database (MySQL). It is built using Servlet and JSP.
 
 ![Screenshot 2022-08-13 232555](https://user-images.githubusercontent.com/93228693/184520158-743b568c-3b7e-4b95-87b9-a1c0e30bd654.png)
 
